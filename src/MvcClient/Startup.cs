@@ -42,6 +42,8 @@ namespace MvcClient
                     options.ResponseType = "code";
 
                     options.SaveTokens = true;
+                    options.Scope.Add("profile");
+                    options.GetClaimsFromUserInfoEndpoint = true;
                 });
         }
 
@@ -67,6 +69,7 @@ namespace MvcClient
 
             app.UseEndpoints(endpoints =>
             {
+                //endpoints.MapControllers()
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}")
