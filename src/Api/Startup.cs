@@ -45,6 +45,17 @@ namespace Api
                     policy.RequireClaim("scope", "api1");
                 });
             });
+            string[] origins = { "https://localhost:44388" , "https://localhost:5001"};
+            services.AddCors(options =>
+            {
+                // this defines a CORS policy called "default"
+                options.AddPolicy("default", policy =>
+                {
+                    policy.WithOrigins(origins)
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
 
         }
 
@@ -59,6 +70,7 @@ namespace Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors("default");
             app.UseAuthentication();
             app.UseAuthorization();
 

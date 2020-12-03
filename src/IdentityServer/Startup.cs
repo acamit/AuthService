@@ -42,6 +42,7 @@ namespace IdentityServer
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
+
         }
 
         public void Configure(IApplicationBuilder app)
@@ -54,7 +55,7 @@ namespace IdentityServer
             //uncomment if you want to add MVC
             app.UseStaticFiles();
             app.UseRouting();
-
+            app.UseCors("default");
             app.UseIdentityServer();
 
             //uncomment, if you want to add MVC

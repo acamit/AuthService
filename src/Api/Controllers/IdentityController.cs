@@ -10,7 +10,7 @@ namespace Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize]
+
     public class IdentityController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
